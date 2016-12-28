@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+table{ border-collapse:collapse; 
+/*单元格间隙合*/
+text-align:center;
+	}
+th,td{
+	padding:0;}	
+</style>
+</head>
+
+<body>
+<table border="1">
+  <thead>
+     <tr>
+        <th>星期一</th>
+        <th>星期二</th>
+        <th>星期三</th>
+        <th>星期四</th>
+        <th>星期五</th>
+     </tr>
+   </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+    </tr>
+      <tr>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+    </tr>
+    <tr>
+      <td rowspan="2">语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+    </tr>
+    <tr>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+    </tr>
+    <tr>
+      <td>语文</td>
+      <td>语文</td>
+      <td>语文</td>
+      <td colspan="2">语文</td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<form action="http://ww.baidu.com">
+ <label for="yhm">用户名</label>
+  <input type="text" name="yonghum"  id="yhm" disabled="disabled" value="chishengqi"/><br/>
+  <label for="mm">密码  </label>
+  <input type="password" name="mima" id="mm"/><br/>
+   <label for="sex">性别：</label>
+  <input type="radio" name="sex" id="sex" checked="checked"/>男
+  <input type="radio" name="sex" id="sex" />女 <br/>
+  <input type="checkbox" name="dx" checked="checked"/>多选1
+  <input type="checkbox" name="dx" />多选2
+  <input type="checkbox" name="dx" />多选3<br/>
+  <input type="button" name="btn" value="提交" />
+  <input type="submit" value="提交表单" />
+  <input type="reset" value="清除" />
+  <p>
+  <input type="image" name="zp" value="照片" src="img/xl.png"/>
+  </p>
+  <p>
+  <input type="file" />
+  </p>
+  <p>
+  <input type="hidden" name="隐藏内容" value="秘密1123"/></p>
+  <select>
+  <option>选择1</option>
+  <option>选择2</option>
+  <option>选择3</option>
+  </select> <br/>
+  <textarea id="text1" name="wbk"  style="width:200px; height:200px;border:1px solid #00F">
+  </textarea>  
+</form>
+</body>
+</html>

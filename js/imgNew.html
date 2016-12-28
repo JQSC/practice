@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<style>
+*{ margin:0; padding:0}
+body{-webkit-perspective:800px; -webkit-transform-style:preserve-3d; background-color:#000;}
+.imgList{ position:relative; width:1300px; top:200px; height:500px  }
+.imgList img{ position:absolute; width:260px; float:left; 
+ -webkit-box-reflect:below 0px -webkit-linear-gradient(left,rgba(0,0,0,0.2) 0%,rgba(0,222,233,0.8) 100%);
+ transition:1s all ease
+}
+
+</style>
+</head>
+<script>
+//transition 过度
+///rgba(红+绿+蓝+透明度) 
+//渐变 background:-webkit-linear-gradient(top,red 0%,blue 100%)
+///倒影 -webkit-box-reflect:right 10px -webkit-linear-gradient(left,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.8) 100%)    above|below|left|right   (方向 ,距离，渐变)
+///变换/斜切 transform:rotate(30deg)
+///img:hover{-webkit-transform:rotateY(360deg);}
+///transform:translateZ()  z轴位移
+window.onload=function()
+{
+	 var oimgList=document.getElementsByClassName('imgList')
+	 var oImg=oimgList[0].getElementsByTagName('img')
+        //初始化
+		  oImg[0].style.transform='rotateY(30deg)' 
+		  oImg[1].style.transform='rotateY(30deg)' 
+		  oImg[2].style.transform='translateZ(200px)'
+		  oImg[3].style.transform='rotateY(-30deg)' 
+		  oImg[4].style.transform='rotateY(-30deg)' 
+		  
+		  oImg[0].style.left='10px'
+		  oImg[1].style.left='280px'
+		  oImg[2].style.left='550px'
+		  oImg[3].style.left='820px'
+		  oImg[4].style.left='1090px'
+		  
+		   oImg[0].style.zIndex=0
+		   oImg[1].style.zIndex=1
+		   oImg[2].style.zIndex=2
+		   oImg[3].style.zIndex=1
+		   oImg[4].style.zIndex=0
+	   for(var i=0 ;i<oImg.length;i++)
+	   {
+		    oImg[i].onclick=function()
+			{
+				///向左翻
+			    if(this.offsetLeft<=280)
+				{
+				      for(var j=0;j<oImg.length;j++)
+			           {
+						  	
+						  if(oImg[j].offsetLeft<=10)
+						  {
+							   oImg[j].style.left='1090px'
+							  
+						  } 
+						  else
+						  {
+						      oImg[j].style.left=oImg[j].offsetLeft-270+'px' 
+						  }
+					       
+					   }
+					  for(var j=0;j<oImg.length;j++)
+					  {
+						  if(oImg[j].offsetLeft==820)
+						   {
+							  
+						   oImg[j].style.transform='translateZ(200px)' 	  
+					       oImg[j].style.zIndex=2
+						   }  
+						   else if(oImg[j].offsetLeft==1090)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(-30deg)' 
+							 oImg[j].style.zIndex=1 
+							} 
+						   else if(oImg[j].offsetLeft==550)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(30deg)'
+							 oImg[j].style.zIndex=1   
+							} 
+						  else if(oImg[j].offsetLeft==10)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(-30deg)' 
+							 oImg[j].style.zIndex=0  
+							} 
+						else if(oImg[j].offsetLeft==280)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(30deg)'
+							 oImg[j].style.zIndex=0   
+							} 						
+					  }  
+				}
+			///分割线  ///向右翻
+			if((this.offsetLeft==820)&&(this.offsetLeft=1090))
+				{
+				      for(var j=0;j<oImg.length;j++)
+			           {
+						  	
+						  if(oImg[j].offsetLeft>=1090)
+						  {
+							   oImg[j].style.left='10px'
+							  
+						  } 
+						  else
+						  {
+						      oImg[j].style.left=oImg[j].offsetLeft+270+'px' 
+						  }
+					       
+					   }
+					  for(var j=0;j<oImg.length;j++)
+					  {
+						  if(oImg[j].offsetLeft==280)
+						   {
+							  
+						   oImg[j].style.transform='translateZ(200px)' 	  
+					       oImg[j].style.zIndex=2
+						   }  
+						   else if(oImg[j].offsetLeft==550)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(-30deg)' 
+							 oImg[j].style.zIndex=1 
+							} 
+						   else if(oImg[j].offsetLeft==820)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(-30deg)'
+							 oImg[j].style.zIndex=0   
+							} 
+						  else if(oImg[j].offsetLeft==1090)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(30deg)' 
+							 oImg[j].style.zIndex=0  
+							} 
+						else if(oImg[j].offsetLeft==10)
+						   {
+							   
+							 oImg[j].style.transform ='rotateY(30deg)'
+							 oImg[j].style.zIndex=1  
+							} 						
+					  }  
+				}	
+			///分割  正中 放大缩小
+			  if((this.offsetLeft==550)&&(this.style.transform=='translateZ(200px)'))
+			 {
+		       // this.style.transform='translateZ(500px)'  
+			      this.style.width='500px'
+				  this.style.left= this.offsetLeft-100+'px'
+				  this.style.transform='translateZ(201px)'
+				  this.style.zIndex=2  
+			 }
+			 else if((this.offsetLeft==450)&&(this.style.transform=='translateZ(201px)'))
+				{
+					  this.style.transform='translateZ(200px)'
+					  this.style.width='260px'
+					  this.style.left= this.offsetLeft+100+'px'
+				 }
+			 	
+			}  
+	   }	   
+}
+</script>
+<body>
+<div class="imgList">
+  <img  alt="美女" src="images/3.jpg" />
+  <img  alt="美女" src="images/4.jpg" />
+  <img  alt="美女" src="images/5.jpg"  />
+  <img  alt="美女" src="images/6.jpg" />
+  <img  alt="美女" src="images/7.jpg" />
+</div>
+</body>
+</html>

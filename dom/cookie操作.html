@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script>
+window.onload=function(){
+	
+	var oUser=document.getElementById('user')
+	var opassword=document.getElementById('password')
+	var ologon=document.getElementById('logon')
+	var odelete=document.getElementById('delete')
+	//登录
+	ologon.onclick=function()
+	{
+		
+		setCookie('User',oUser.value,5)
+		setCookie('PassWord',opassword.value,5)
+	}
+	//获取
+	var User=GetCookie('User')
+	var password=GetCookie('PassWord')
+	
+	if(User){oUser.value=User}
+	if(password){ opassword.value=password }
+	//删除
+	odelete.onclick=function()
+	{
+		removeCookie('User')
+		removeCookie('PassWord')
+	    alert('删除cookie成功!')	
+    }
+	
+	
+	//设置cookie ,并进行编码
+	function setCookie(name,value,day)
+	{ 
+		var oDate=new Date()
+		oDate.setDate(oDate.getDate()+day)
+		//alert(name+'$$$$'+value)
+		document.cookie=name+'='+encodeURI(value)+';expires='+oDate.toGMTString()
+		
+	}
+	//获取cookie 并解除编码
+	function GetCookie(name)
+	{   
+	   	var  arr=document.cookie.split('; ')
+		for(var i=0; i<arr.length; i++)
+		{   var arrval=arr[i].split('=')
+		   if(arrval[0] == name)
+			{
+			  return  decodeURI(arrval[1]) 
+		    }	
+		}
+		return false
+	}
+	///删除cookie
+	function removeCookie(name)
+	{
+	 setCookie(name, '', -1);
+	}
+}
+</script>
+</body>
+<form>
+ 用户名:<input type="text" value="" id="user" />
+ 密码:<input type="password" id="password" />
+ <input type="submit"  value="登录" id="logon"/>
+ <input type="button" value="删除" id="delete"/>
+</form>
+</html>

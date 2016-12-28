@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#cl{ background-color:#FFF}
+</style>
+<script>
+window.onload= function(){
+	//绘图
+	var oC=document.getElementById('cl')
+	var oGC=oC.getContext('2d')
+   oC.onmousedown = function(ev)
+   {
+		var ev = ev || window.event;
+		oGC.moveTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop)
+		document.onmousemove = function(ev)
+		{
+			var ev = ev || window.event;
+		oGC.lineTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop)
+		oGC.stroke();
+		};
+		
+	};
+	document.onmouseup = function()
+	{
+			document.onmousemove = null;
+			document.onmousedown = null;
+	};
+
+}
+
+
+
+</script>
+</head>
+
+<body>
+<canvas id="cl" width="400" height="400">   <!--默认宽300 高150-->
+</canvas>
+</body>
+</html>

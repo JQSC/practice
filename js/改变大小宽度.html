@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div1{ width:100px; height:100px; border:4px solid #000;}
+.zt{ font-weight:bold; font-size:20px; }
+.sz {  float:right; margin-right:800px;}
+ul{ padding:0; margin:0;}
+li{ list-style:none; line-height:30px;}
+a{ text-decoration:none;}
+input{ border:none}
+.red{ background-color:#0C0; color:#FFF; width:25px; height:25px; margin-right:5px; display:inline-block }
+.yeallo{ background-color:#C60; color:#FFF; width:25px; height:25px;margin-right:5px;display:inline-block }
+.blue{ background-color:#F0F; color:#FFF; width:25px; height:25px;margin-right:5px; display:inline-block }
+.fontsty{ font-weight:bold; font-size:19px;}
+.btn{ background-color:#00C; font-size:17px; color:#FFF; margin-left:30px;}
+.sz{ background-color:#999; height:150px; width:250px;display:none}
+.xs{ font-size:20px; color:#FFF; background-color:#C0F; }
+</style>
+
+</head>
+<script type="text/javascript">
+ window.onload=function()
+ {
+var btnhf=document.getElementById("btnhf");
+var div1=document.getElementById("div1")
+ var red=document.getElementById("h")
+ var hu=document.getElementById("hu")
+  var l=document.getElementById("l")	 
+ 	red.onclick=function()
+	{
+	  red.style.background="red"
+	  div1.style.background="red"
+		} 
+	hu.onclick=function()
+	{
+	  hu.style.background="#FF3"
+	  div1.style.background="#FF3"
+		} 
+		l.onclick=function()
+	{
+	  l.style.background="blue"
+	  div1.style.background="blue"
+		} 		
+ var btnqr=document.getElementById("btnqr")
+ btnqr.onclick=function()
+ { 
+	 var wbk=document.getElementById("wbk") 
+	 wbk.style.display="none"
+	 }
+
+btnhf.onclick=function()
+{
+	location.reload() 
+	
+	}	
+	
+var bt1=document.getElementById("bt1")
+ bt1.onclick=function()
+ {
+	var wbk=document.getElementById("wbk") 
+	 wbk.style.display="block"
+	 }	
+	 
+	 }
+
+
+</script>
+<body>
+<span class="zt">请为下面的DIV设置样式:</span>
+<input  type="button" id="bt1" value="显示" class="xs" />
+<div id="div1">
+</div>
+<div  class="sz" id="wbk">
+  <ul>
+     <li><span class="fontsty">请选择背景色: </span><a href="#" class="red" id="h">红</a><a href="#" class="yeallo" id="hu">黄</a><a href="#" class="blue" id="l">蓝</a></li>
+     <li><span class="fontsty">请选择宽(PX): </span><a href="#" class="red">100</a><a href="#" class="yeallo">200</a><a href="#" class="blue">300</a></li>
+     <li><span class="fontsty">请选择高(PX): </span><a href="#" class="red">100</a><a href="#" class="yeallo">200</a><a href="#" class="blue">300</a></li>   
+  </ul>
+   <input type="button" value="恢复"  class="btn" id="btnhf"/>
+   <input type="button" value="确认"  class="btn"  id="btnqr"/>
+</div>
+</body>
+</html>

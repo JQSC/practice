@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background-color:#000}
+#cl{ background-color:#CCC}
+</style>
+<script>
+ window.onload =function ()
+ {
+   var oC=document.getElementById('cl')
+   var oCl=oC.getContext('2d')
+   
+  // canvas时钟
+  setInterval(DateTime,1000) 
+
+   
+  function DateTime()
+ {
+	oCl.clearRect(0,0,oC.width,oC.height) 
+//获取时分秒	 
+   var oDate = new Date();
+   var oHours = oDate.getHours();
+   var oMin = oDate.getMinutes();
+   var oSen = oDate.getSeconds();   
+   Min=oMin*6-90
+   Sen=oSen*6-90
+   Hours=oHours*30-90+oMin/2   
+   var x=400
+   var y=300
+   var r=200
+ //绘画小格  一格6°  分刻度 
+   for(var i=0 ; i<60; i++)
+   {
+   oCl.beginPath();
+   oCl.moveTo(x,y);  //锚点
+   oCl.arc(x,y,r,6*i*Math.PI/180,6*(i+1)*Math.PI/180,false)  //画圆
+   oCl.closePath()
+   oCl.stroke();   // 先行封闭
+   }  
+   // 清画布
+   oCl.beginPath();
+   oCl.fillStyle = '#CCC';
+   oCl.moveTo(x,y);
+   oCl.arc(x,y,r-7,0*Math.PI/180,360*Math.PI/180,false)
+   oCl.closePath()
+   oCl.fill();    //填充  
+ 
+ // 小时刻度   
+   for(var i=0 ; i<30; i++)
+   {
+   oCl.beginPath();
+   oCl.lineWidth=3; //线条宽度
+   oCl.moveTo(x,y);
+   oCl.arc(x,y,r,30*i*Math.PI/180,30*(i+1)*Math.PI/180,false)
+   oCl.closePath()
+   oCl.stroke();   // 画直线
+   }
+    // 清画布
+   oCl.beginPath();
+   oCl.fillStyle = '#CCC';
+   oCl.moveTo(x,y);
+   oCl.arc(x,y,r-20,0*Math.PI/180,360*Math.PI/180,false)
+   oCl.closePath()
+   oCl.fill();    //填充 
+   
+ //时针
+   oCl.save();
+   oCl.beginPath();
+   oCl.strokeStyle='red'
+   oCl.lineJoin='round'
+   oCl.lineWidth=5; //线条宽度
+   oCl.moveTo(x,y);
+   oCl.arc(x,y,r/2,Hours*Math.PI/180,Hours*Math.PI/180,false)
+   oCl.closePath()
+   oCl.stroke();   
+   oCl.restore()
+ //分针
+   oCl.save();
+   oCl.beginPath();
+   oCl.strokeStyle='yellow'
+   oCl.lineJoin='round'
+   oCl.lineWidth=3; //线条宽度
+   oCl.moveTo(x,y);
+   oCl.arc(x,y,r-60,Min*Math.PI/180,Min*Math.PI/180,false)
+   oCl.closePath()
+   oCl.stroke(); 
+   oCl.restore() 
+ //秒针
+   oCl.save();
+   oCl.beginPath();
+   oCl.strokeStyle='blue'
+   oCl.lineJoin='round'
+   oCl.lineWidth=2; //线条宽度
+   oCl.moveTo(x,y);
+   oCl.arc(x,y,r-40,Sen*Math.PI/180,Sen*Math.PI/180,false)
+   oCl.closePath()
+   oCl.stroke();  
+   oCl.restore()
+	 }
+
+ }
+ 
+</script>
+</head>
+
+<body>
+<canvas id="cl" width="800" height="800">
+</canvas>
+</body>
+</html>

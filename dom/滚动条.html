@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div2 {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	background-color: #C06;
+	left: 900px;
+	z-index: 2
+}
+</style>
+</head>
+<script>
+/*
+1.碰撞检测 - 重合检测
+2.模拟滚动条 - 如果内容没有溢出就没有滚动条，当内容高度大于可视高度的时候才出现，
+拖拽的滚动条根据内容多少动态变化，内容越多滚动条高度越短
+
+
+*/
+
+window.onload=function()
+{
+  var oDiv2=document.getElementById('div2')
+  var oDiv1=document.getElementById('div1')
+   var oimg=document.getElementById('img1')
+   //碰撞检测
+ 		var W11=oDiv1.offsetLeft
+		var W22=oDiv1.offsetLeft+oDiv1.offsetWidth
+		var H11=oDiv1.offsetTop
+		var H22=oDiv1.offsetTop+oDiv1.offsetHeight
+   	 oDiv2.onmousedown=function(ev)
+	 {
+		 var ev=ev||event	
+		var cX= ev.clientX-oDiv2.offsetLeft
+		var cY= ev.clientY-oDiv2.offsetTop
+	    //碰撞检测 需设置四条边的可视区距离
+		
+		//alert(H1+'***'+H11)
+		 document.onmousemove=function(ev)
+		 {
+ 
+		  var ev=ev||event	
+		 oDiv2.style.left=ev.clientX-cX+'px'
+	     oDiv2.style.top=ev.clientY-cY+'px' 
+		 var W1=oDiv2.offsetLeft
+		var W2=oDiv2.offsetLeft+oDiv2.offsetWidth
+		var H1=oDiv2.offsetTop
+		var H2=oDiv2.offsetTop+oDiv2.offsetHeight
+		 if((W2<W11)||(W1>W22)||(H1>H22)||(H2<H11))
+		 {
+		  oimg.src='1.jpg'    
+		 }
+		 else{
+			oimg.src='2.jpg'     
+			 
+			 }
+		
+	
+		 
+		}
+		 
+		 
+	     document.onmouseup=function()
+		 {
+			document.onmousemove=null
+			 
+		 }	 
+	 }
+	 
+  //模拟滚动条
+  var oScroll=document.getElementById('scroll')
+  var oDiv3=document.getElementById('div3')
+   var oDiv4=document.getElementById('div4')
+   var oDiv5=document.getElementById('div5')
+   if( oDiv4.offsetHeight<oDiv5.offsetHeight)
+   {
+	  oScroll.style.display='none' 
+	   
+	   }
+  
+  var speed=(oDiv4.offsetHeight-oDiv5.offsetHeight)/(oScroll.offsetHeight-oDiv3.offsetHeight)
+ // alert(speed)
+  oDiv3.onmousedown=function(ev)
+  {
+	  	 var ev=ev||event
+		 var DY=ev.clientY-oDiv3.offsetTop
+		// alert(DY)
+	  document.onmousemove=function(ev)
+	  {  var ev=ev||event
+	     var L1=oScroll.offsetHeight-oDiv3.offsetHeight+oScroll.offsetTop
+	    if(ev.clientY-DY<oScroll.offsetTop)
+		{
+		 	 oDiv3.style.top=oScroll.offsetTop+'px'
+		}
+		else if(ev.clientY-DY>L1)
+		{
+			oDiv3.style.top=L1+'px'
+			
+		}
+		else
+		{	
+		 oDiv3.style.top=ev.clientY-DY+'px'
+		}
+		
+		//oDiv4.style.top =oDiv4.offsetTop-(ev.clientY-DY)*speed +'px'
+		oDiv4.style.top  =oDiv5.offsetTop-oDiv3.offsetTop*speed+'px'
+	  }  
+	  document.onmouseup=function()
+	  {
+		 document.onmousemove =document.onmouseup=null
+		  		  
+	  }  
+    }
+  	 
+}
+</script>
+
+<body>
+<div id="div2"> 非行间 </div>
+<div id="div1" style="width:100px; height:100px; 
+overflow:hidden; position:absolute; left:900px; top:200px;"> <img src="1.jpg" id="img1" alt="1"/> </div>
+<div id="scroll" style="height:500px; width:40px; background:#000; ">
+  <div id="div3" style="width:40px; height:40px; background-color:#F0F; position:absolute"> </div>
+</div>
+<div  id="div5" style="width:500px; height:500px; border:1px solid 
+#39F; position:absolute; top:10px; left:60px;">
+  <div id="div4" style="width:500px;  position:absolute;
+ "> 2016年6月25日，国家主席习近平在人民大会堂同俄罗斯总统普京共同出席《中俄睦邻友好合作条约》签署15周年纪念大会并发表题为《共创中俄关系更加美好的明天》的重要讲话，强调中俄要继续携手并肩，坚定沿着条约确定的方向，积极进取，开拓创新，共创中俄关系更加美好的明天。让我们的子孙后代永远生活在和平、友谊、阳光之中。张高丽出席。
+    
+    习近平指出，15年前，中俄双方签署《睦邻友好合作条约》，将两国不结盟、不对抗、不针对第三方的新型国家关系和世代友好的理念用法律形式固定下来，为两国关系在21世纪长远发展奠定了坚实法律基础。在条约宗旨和原则指导下，双方建立起平等信任、相互支持、共同繁荣、世代友好的全面战略协作伙伴关系，给两国人民带来了实实在在的利益，也为地区和世界和平、安全、稳定作出了积极贡献。
+    
+    习近平强调，15年来，在条约精神指引下，中俄全面战略协作伙伴关系在高水平上快速向前发展，各领域合作取得丰硕成果。双方建立起高度政治互信。双方都把对方发展视为本国发展的机遇，致力于共同发展，实现共同繁荣。双方建立起完备的高层交往机制，确保双边关系高水平运行。双方基于共赢原则开展互利互惠经济合作。双方人文交流蓬勃发展，传统友谊日益巩固。双方在国际和地区事务中密切协调和配合，成为促进国际和平稳定的关键因素和建设性力量。15年来的实践充分证明，条约确立的宗旨和原则符合中俄两国和两国人民的根本利益，契合和平与发展的时代主题。
+    2016年6月25日，国家主席习近平在人民大会堂同俄罗斯总统普京共同出席《中俄睦邻友好合作条约》签署15周年纪念大会并发表题为《共创中俄关系更加美好的明天》的重要讲话，强调中俄要继续携手并肩，坚定沿着条约确定的方向，积极进取，开拓创新，共创中俄关系更加美好的明天。让我们的子孙后代永远生活在和平、友谊、阳光之中。张高丽出席。
+    
+    习近平指出，15年前，中俄双方签署《睦邻友好合作条约》，将两国不结盟、不对抗、不针对第三方的新型国家关系和世代友好的理念用法律形式固定下来，为两国关系在21世纪长远发展奠定了坚实法律基础。在条约宗旨和原则指导下，双方建立起平等信任、相互支持、共同繁荣、世代友好的全面战略协作伙伴关系，给两国人民带来了实实在在的利益，也为地区和世界和平、安全、稳定作出了积极贡献。
+    
+    习近平强调，15年来，在条约精神指引下，中俄全面战略协作伙伴关系在高水平上快速向前发展，各领域合作取得丰硕成果。双方建立起高度政治互信。双方都把对方发展视为本国发展的机遇，致力于共同发展，实现共同繁荣。双方建立起完备的高层交往机制，确保双边关系高水平运行。双方基于共赢原则开展互利互惠经济合作。双方人文交流蓬勃发展，传统友谊日益巩固。双方在国际和地区事务中密切协调和配合，成为促进国际和平稳定的关键因素和建设性力量。15年来的实践充分证明，条约确立的宗旨和原则符合中俄两国和两国人民的根本利益，契合和平与发展的时代主题。
+    2016年6月25日，国家主席习近平在人民大会堂同俄罗斯总统普京共同出席《中俄睦邻友好合作条约》签署15周年纪念大会并发表题为《共创中俄关系更加美好的明天》的重要讲话，强调中俄要继续携手并肩，坚定沿着条约确定的方向，积极进取，开拓创新，共创中俄关系更加美好的明天。让我们的子孙后代永远生活在和平、友谊、阳光之中。张高丽出席。
+    
+    习近平指出，15年前，中俄双方签署《睦邻友好合作条约》，将两国不结盟、不对抗、不针对第三方的新型国家关系和世代友好的理念用法律形式固定下来，为两国关系在21世纪长远发展奠定了坚实法律基础。在条约宗旨和原则指导下，双方建立起平等信任、相互支持、共同繁荣、世代友好的全面战略协作伙伴关系，给两国人民带来了实实在在的利益，也为地区和世界和平、安全、稳定作出了积极贡献。
+    
+    习近平强调，15年来，在条约精神指引下，中俄全面战略协作伙伴关系在高水平上快速向前发展，各领域合作取得丰硕成果。双方建立起高度政治互信。双方都把对方发展视为本国发展的机遇，致力于共同发展，实现共同繁荣。双方建立起完备的高层交往机制，确保双边关系高水平运行。双方基于共赢原则开展互利互惠经济合作。双方人文交流蓬勃发展，传统友谊日益巩固。双方在国际和地区事务中密切协调和配合，成为促进国际和平稳定的关键因素和建设性力量。15年来的实践充分证明，条约确立的宗旨和原则符合中俄两国和两国人民的根本利益，契合和平与发展的时代主题。 </div>
+</div>
+</body>
+</html>

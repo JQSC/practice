@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;}
+body{font-size:12px; height:100% /*font-family:"宋体";font-family:'Microsoft YaHei';*/}
+ul,ol{list-style-type:none;}
+select,input,img{vertical-align:middle;}
+a{text-decoration:none;}
+/*妙味课堂*/
+body { }
+img{border:none;}
+/*下半部分*/
+.bottom{background-color:#1b1b1b; height:46px; width:100%; position:fixed;z-index:4; margin:0 auto; bottom:0;opacity:0.8;}
+.bottom_left{ float:left; line-height:48px; }
+.webfont{ color:#FFF; float:left; padding-left:10px;}
+.pag{ color:#686868; float:left; padding-left:100px; font-size:14px; font-weight:bold;}
+.bottom_right{ float:right; padding-right:100px;}
+
+/*上班部分*/
+.ConcerImg img{ width:100%;position:absolute;overflow:hidden;  }
+.LeftImg{ position:fixed; bottom:5px; left:5px;fixed;z-index:4; opacity:0.8; }
+.LeftImg img{width:77px; height:60px; }
+.RightImg{ position:fixed; bottom:5px; right:5px;fixed;z-index:4;opacity:0.8;  }
+.RightImg img{width:77px; height:60px; }
+.center{ width:486px ; height:326px; border:1px solid #000;position:fixed; background-color:#966; top:156px; left:440px; opacity:0.9; display:none;}
+.center img{ width:100px; height:68px; float:left; border:1px solid #FFF; margin-left:15px; margin-top:15px;}
+.tit{ padding:10px; color:#FFF; width:100px; display:inline-block}
+
+/*关闭按钮*/
+.close{ float:right; margin:10px; width:10px; text-align:center; font-weight:bold; display:inline-block; border:1px solid #666; color:#00F;}
+

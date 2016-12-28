@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<script>
+ window.onload =  function(){
+	var oPrev=document.getElementById("prev")    //上一页
+	var oNext=document.getElementById("next")    //下一页
+	var oImg=document.getElementById("img")     //主照片
+	var oLeftImg=document.getElementById("LeftImg")  //左缩略图
+    var oRightImg=document.getElementById("RightImg") //又缩略图
+	var oPagfont=document.getElementById('pagfont')   //页码 
+	var oAll=document.getElementById('all')           //简略图
+	var oCenter=document.getElementById('center')     //缩略图内容
+	var oLi=document.getElementsByTagName("li")
+	var arrImgList=["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg","images/11.jpg","images/12.jpg"]
+
+	
+ var num=0
+ var Lifenum=arrImgList.length-1
+ var Rightnum=1
+ //初始化
+ oImg.src=arrImgList[num];
+ oPagfont.innerHTML=1+num+'/'+arrImgList.length
+ oLeftImg.src=arrImgList[Lifenum]
+ oRightImg.src=arrImgList[Rightnum]
+ 
+     for(var i=0; i<oLi.length; i++)
+	{
+		 oLi[i].index=i
+		oLi[i].onclick=function()
+		{
+			num=this.index
+		 oImg.src=arrImgList[num];
+		 oPagfont.innerHTML=1+num+'/'+arrImgList.length
+		 if(num==0)
+		 {	 
+ 		 Lifenum=oLi.length-1
+		 Rightnum=num+1}
+		 else if(num==(oLi.length-1)){Lifenum=num-1;Rightnum=0}
+		else{Lifenum=num-1;Rightnum=num+1}
+		
+		 oLeftImg.src=arrImgList[Lifenum]
+		 oRightImg.src=arrImgList[Rightnum]	
+			
+			}
+		}
+//上一页按钮事件
+oPrev.onclick=function()
+{
+	move(0,arrImgList.length-1,-1)
+	}
+ //下一页按钮事件
+oNext.onclick=function(){
+move(arrImgList.length-1,0,1)
+
+}
+
+oLeftImg.onclick=function()
+{
+	move(0,arrImgList.length-1,-1)
+	}	
+oRightImg.onclick=function()
+{
+	move(arrImgList.length-1,0,1)
+	}
+/*展开按钮*/
+  oAll.onclick= function()
+  {
+	 if(oCenter.style.display=='')
+	 {
+		 oCenter.style.display='block'
+		 
+		 }
+	 else{
+		 oCenter.style.display=''
+		 }	 
+	  
+	  }
+
+ //定时器 自动播放
+ var time=null
+ var tuo=true   //播放开关
+ var oStop=document.getElementById('stop')
+ 	oStop.onclick =function()
+	{
+		
+	 if(tuo){
+		tuo=false 
+	 clearInterval(time)
+	 time=setInterval(function(){
+	 move(arrImgList.length-1,0,1)
+	 },1000)
+	 }
+	 else{
+		 tuo=true
+		 clearInterval(time)
+		 }
+		
+	}
+	  
+	  
+function move(par1,par2,par3)
+{
+ if(Lifenum==par1){  Lifenum=par2 }else{ Lifenum=Lifenum+par3 }	
+ if(Rightnum==par1) {Rightnum=par2 }else{Rightnum=Rightnum+par3}	
+ if(num==par1){num=par2}else{num=num+par3}
+ oLeftImg.src=arrImgList[Lifenum]
+ oRightImg.src=arrImgList[Rightnum] 
+ oImg.src=arrImgList[num];
+ oPagfont.innerHTML=1+num+'/'+arrImgList.length
+	}	 
+ } 
+</script>
+<body>
+<div class="ConcerImg">
+  <img src="" id="img"/>
+</div>
+<div class="bottom">  
+  <div class="bottom_left">
+     <p class="pag" id="pagfont">加载中...</p>
+     <strong class="webfont">www.chishengqi.com</strong> 
+  </div>
+  <div class="bottom_right">
+  <a href="javascript:;"><img src="img/album.png"  id="all"/></a>
+  <a href="#"><img src="img/back_dull.png" id="prev"/></a>
+  <a href="#"><img src="img/pause_dull.png" id="stop" /></a>
+  <a href="#"><img src="img/forward_dull.png" id="next" /></a>
+  </div>
+</div>
+<div class="center" id="center">
+   <h3 class="tit">当前相册内容</h3>
+   <a href="" class="close">X</a>
+  <ul>
+     <li><a href="#"><img  alt="美女" src="images/1.jpg" /></a></li>
+     <li><a href="#"><img src="images/2.jpg" /></a></li>
+     <li><a href="#"><img src="images/3.jpg" /></a></li>
+     <li><a href="#"><img src="images/4.jpg" /></a></li>
+     <li><a href="#"><img src="images/5.jpg" /></a></li>
+     <li><a href="#"><img src="images/6.jpg" /></a></li>
+     <li><a href="#"><img src="images/7.jpg" /></a></li>
+     <li><a href="#"><img src="images/1.jpg" /></a></li>
+     <li><a href="#"><img src="images/8.jpg" /></a></li>
+     <li><a href="#"><img src="images/9.jpg" /></a></li>
+     <li><a href="#"><img src="images/10.jpg" /></a></li>
+     <li><a href="#"><img src="images/11.jpg" /></a></li>          
+  </ul>
+</div>
+<div class="LeftImg">
+   <a href="#"><img src="" id="LeftImg" /></a>
+</div>
+<div class="RightImg">
+  <a href="#"><img src="" id="RightImg" /></a>
+</div>
+</body>
+</html>

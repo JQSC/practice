@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script>
+window.onload=function()
+{
+	var oForm=document.getElementById('form')
+	
+	oForm.sex[0].onchange=function()
+	{
+		alert(oForm.sex[0].value)
+		
+		}
+	oForm.selectn.onchange=	function()
+	{
+		alert(oForm.selectn.value)
+		
+		}
+	oForm.check[0].onchange=function()
+	{
+		alert(oForm.check[0].value)
+		
+		}	
+	oForm.btn1.onclick=function()
+	{
+	   oper=window.open()	
+		oper.document.body.style.background='red'
+		
+		}
+	oForm.btn2.onclick=function()
+	{
+		
+		window.close()
+		
+		}	
+		oForm.btn3.onclick=function()
+	{
+		
+		oper.close()
+		
+		}	
+		
+	//alert(window.navigator.userAgent )		
+	}
+</script>
+
+<body>
+<form id="form">
+<input type="text" value="池圣齐"/>
+<input type="radio" name="sex" value=1 checked="checked"/>男
+<input type="radio" name="sex" value=2/>女
+<input type="checkbox" name="check"  checked="checked"/>红
+<input type="checkbox" name="check" />绿
+<input type="checkbox" name="check" />蓝
+<select name="selectn">
+ <option>请选择语言</option>
+ <option>HTML</option>
+ <option>CSS</option>
+ <option>JavaScript</option>
+</select>
+<input type="reset" value="重置" />
+<input type="submit" value="提交" />
+<input type="button"  name="btn1" value="打开一个新窗口" />
+<input type="button"  name="btn2" value="关闭当前窗口" />
+<input type="button"  name="btn3" value="关闭打开的新窗口" />
+</form>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div2{ width:100px ; height:100px; position:absolute; 
+background-color:#C06; left:400px;  z-index:2}
+</style>
+</head>
+<script>
+window.onload=function()
+{
+   var oDiv2=document.getElementById('div2')
+  var oDiv1=document.getElementById('div1')
+   var oimg=document.getElementById('img1')
+    var oTxt=document.getElementById('txt')
+ 		var W11=oDiv1.offsetLeft
+		var W22=oDiv1.offsetLeft+oDiv1.offsetWidth
+		var H11=oDiv1.offsetTop
+		var H22=oDiv1.offsetTop+oDiv1.offsetHeight
+   	 oDiv2.onmousedown=function(ev)
+	 {
+		 var ev=ev||event	
+		var cX= ev.clientX-oDiv2.offsetLeft
+		var cY= ev.clientY-oDiv2.offsetTop
+	    //碰撞检测 需设置四条边的可视区距离
+		
+		//alert(H1+'***'+H11)
+		 document.onmousemove=function(ev)
+		 {
+ 
+		  var ev=ev||event	
+		 oDiv2.style.left=ev.clientX-cX+'px'
+	     oDiv2.style.top=ev.clientY-cY+'px' 
+		 var W1=oDiv2.offsetLeft
+		var W2=oDiv2.offsetLeft+oDiv2.offsetWidth
+		var H1=oDiv2.offsetTop
+		var H2=oDiv2.offsetTop+oDiv2.offsetHeight
+
+		oTxt.value='W1:'+W1+'-W2:'+W2+'-H1:'+H1+'-H2:'+H2+'--W11:'+W11+'--W22:'+W22+'--H11:'+H11+'-H22:'+H22	
+		 if((W2<W11)||(W1>W22)||(H1>H22)||(H2<H11))
+		 {
+		  oimg.src='1.jpg'    
+		 }
+		 else{
+			oimg.src='2.jpg'     
+			 
+			 }
+		
+	
+		 
+		}
+		 
+		 
+	     document.onmouseup=function()
+		 {
+			document.onmousemove=null
+			 
+		 }	 
+	 }
+}
+</script>
+
+<body>
+<div id="div2">
+非行间
+</div>
+<div id="div1" style="width:100px; height:100px; overflow:hidden; position:absolute; left:200px; top:200px;">
+<img src="1.jpg" id="img1" alt="1"/>
+</div>
+<input type="text"  id="txt" style="width:600px"/>
+</body>
+</html>

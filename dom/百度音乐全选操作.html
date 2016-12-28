@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{ margin:0; padding:0;}   
+li{ list-style:none; padding:0; margin:0; border:1px dashed #e4e4e4;height:33px; line-height:33px;}
+.center{ width:740px; border:1px solid #e4e4e4; margin:auto auto}
+.center ul li a{ text-decoration:none; color:#2d64b3; margin-left:15px }
+.center ul img{ float:right; margin-right:40px; margin-top:10px }
+.botton{ margin:10px 0; padding:5px;}
+.botton a{ border:1px solid #d8d8d8; height:25px; display:inline-block;text-decoration:none;line-height:25px; color:#000; padding:0 12px;}
+input{ height:20px; width:100px;}
+.center ul{ padding:5px;}
+</style>
+</head>
+<script>
+window.onload =function(){
+var oUl=document.getElementById('ul')
+var oInput=oUl.getElementsByTagName('input')
+var oLi=oUl.getElementsByTagName('li')
+var oBotton=document.getElementById('botton')
+var oBot=document.getElementById('bot')
+// oInput[0].checked=true
+ for(var i=0; i<oInput.length; i++)
+ {
+	 oInput[i].index=i
+	oInput[i].onclick=function()
+	{
+		oBotton.checked=false
+		if(this.checked)
+		{
+		oLi[this.index].style.background='#d6d3d3'
+		}
+		else
+		{
+			oLi[this.index].style.background=''
+			}
+		
+		
+		} 
+  }	
+ oBot.onclick=function()
+ {
+	for(var i=0; i<oInput.length; i++)
+   {
+	   oLi[i].style.background=''
+	if(oBotton.checked) { 
+	oInput[i].checked=true
+	}
+	else{
+		
+	oInput[i].checked=false	
+		}
+	
+    }	 
+	 
+ } 
+  
+}
+</script>
+<body>
+<div class="center" >
+  <ul id="ul">
+    <li>
+       <input type="checkbox" />1
+       <a href="">无所谓MV</a>
+       <a href="">杨坤</a>
+       <a href=""><<无所谓>></a>
+       <a href=""><img src="img/music.png" /></a>
+    </li>
+     <li>
+       <input type="checkbox" />2
+       <a href="">What Do You Mean?</a>
+       <a href="">Justin Bieber</a>
+       <a href="">《Purpose》</a>
+       <a href=""><img src="img/music.png" /></a>
+    </li>
+    <li>
+       <input type="checkbox" />3
+       <a href="">陪你度过漫长岁月</a>
+       <a href="">陈奕迅</a>
+       <a href="">《陪你度过漫长岁月》</a>
+       <a href=""><img src="img/music.png" /></a>
+    </li>
+    <li>
+       <input type="checkbox" />4
+       <a href="">往事随风</a>
+       <a href="">齐秦</a>
+       <a href="">《痛并快乐着》</a>
+       <a href=""><img src="img/music.png" /></a>
+    </li>
+    <li>
+       <input type="checkbox" />5
+       <a href="">无所谓MV</a>
+       <a href="">杨坤</a>
+       <a href=""><<无所谓>></a>
+       <a href=""><img src="img/music.png" /></a>
+    </li>
+    <li>
+       <input type="checkbox" />6
+       <a href="">平凡之路</a>
+       <a href="">朴树</a>
+       <a href=""><<平凡之路>></a>
+       <a href=""><img src="img/music.png" /></a>
+    </li>
+  </ul>
+  <div class="botton" id="bot">
+    <input type="checkbox" id="botton" />全部
+    <a href=""><img src="img/y.png" />播放选中歌曲</a>
+    <a href=""><img src="img/sz.png" />加入播放列表</a>
+    <a href=""><img src="img/love.png" />播放选中歌曲</a>
+    <a href=""><img src="img/load.png" />播放选中歌曲<img src="img/hz.png" /></a>
+  </div>
+</div>
+</body>
+</html>

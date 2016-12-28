@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+body,ul li{ list-style:none; margin:0; padding:0;}
+ul h2{ background:#090; color:#FFF;}
+li { border-bottom:1px solid #039; height:30px; line-height:30px; text-indent:2em;}
+</style>
+
+<title>无标题文档</title>
+</head>
+<script>
+window.onload=function()
+{
+var	oUl=document.getElementById('lis')
+var oli=oUl.getElementsByTagName('li')
+  for(var i=0; i<oli.length ; i++)
+ {
+	fn(oli[i])
+	
+	
+ }
+     function fn(li)
+    {
+	 
+	 var ospan=li.getElementsByTagName('span')[0]
+	var ospaninfo=li.getElementsByTagName('span')[1]
+	ospaninfo.style.display='none'
+	var pbtn=ospaninfo.getElementsByTagName('input')
+	var oiput=li.getElementsByTagName('img')[0]
+	oiput.onclick=function()
+	{
+		ospan.style.display='none'
+		ospaninfo.style.display=''
+		oiput.style.display='none'
+		}
+	//取消
+	pbtn[2].onclick=function()
+	{
+		ospaninfo.style.display='none'
+		ospan.style.display=''
+		oiput.style.display=''
+		}
+	//保存		
+	pbtn[1].onclick=function()
+	{
+		ospaninfo.style.display='none'
+		ospan.style.display=''
+		ospan.innerHTML=pbtn[0].value
+		oiput.style.display=''
+		}		
+	 }
+}
+</script>
+
+<body>
+<ul id="lis">
+  <h2>分类名称</h2>
+  <li> 
+  <span>我的好友</span>
+  <span>
+  <input type="text" / value="">
+  <input type="button" value="保存" />
+  <input type="button"  value="取消"/>
+  </span>
+  <img src="img/pan.png" />
+  </li>
+  <li>
+  <span>我的爱人</span>
+  <span >
+  <input type="text" />
+  <input type="button" value="保存" />
+  <input type="button"  value="取消"/>
+  </span>
+  <img src="img/pan.png" />
+  </li>
+</ul>
+</body>
+</html>

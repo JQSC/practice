@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+body,ul,li,h2{margin:0;padding:0;border:0;}
+ul,li{list-style-type:none;}
+.center{ width:280px ; margin:0 auto; border:1px solid #c8c8c8; padding-bottom:20px; background-color:#ecedf0;}
+.center li h3{ background:url(img/jty.png) no-repeat 5px;height:30px; line-height:30px; text-indent:20px; }
+.center li ul li{text-indent:60px; background:url(img/tx.png) no-repeat 10px; height:50px; line-height:50px; }
+.center img .active { background:url(img/jtx.png) no-repeat 5px #0066CC; }
+#lis ul .hover { background-color: #FC6;}
+</style>
+<title>无标题文档</title>
+<script>
+window.onload=function()
+{
+ var oUl=document.getElementById('lis')
+ var oH=oUl.getElementsByTagName('h3')
+ var aUl=oUl.getElementsByTagName('ul')
+ var arrLi=[]
+ var num=""
+   for(var i=0; i<oH.length;i++)
+	{
+	  oH[i].index=i	
+	  oH[i].onclick=function()
+	  {
+		 // alert(aUl[this.index].style.display)
+		  if(aUl[this.index].style.display=='')
+		  {
+			  aUl[this.index].style.display='none'
+			  }
+		else if(aUl[this.index].style.display=='none'){  
+		 aUl[this.index].style.display=''
+		 oH[this.index].className='active'
+		     }
+	  }		
+	}
+  //存入所有li
+   for( var i=0; i<aUl.length; i++ ){
+		aLi = aUl[i].getElementsByTagName('li');
+		for( var j=0; j<aLi.length; j++ ){
+			arrLi.push( aLi[j] );
+		}
+	}
+	//遍历li  进行点击事件
+  	for( var i=0; i<arrLi.length; i++ ){
+		arrLi[i].onclick = function (){
+			
+			for( var i=0; i<arrLi.length; i++ ){
+				if( arrLi[i] !=this ){
+					arrLi[i].className = '';
+				}
+			}
+			if( this.className == '' ){
+				this.className = 'hover';
+			}else{
+				this.className = '';
+			}
+		};
+	}
+}
+
+</script>
+</head>
+
+<body>
+<div>
+ <ul class="center" id="lis">
+    <img src="img/ht.png" />
+    <li class="list">
+      <h3>我的好友</h3>
+      <ul>
+         <li>范冰冰</li>
+         <li>小冰</li>
+         <li>二冰</li>
+      </ul>
+    </li>
+    <li>
+      <h3>东华公司</h3>
+      <ul>
+         <li>郭老师</li>
+         <li>卢工</li>
+      </ul>
+    </li>
+    <li>
+       <h3>大学朋友</h3>
+       <ul>
+         <li>丁智勇</li>
+         <li>赵军考</li>
+         <li>岳伟</li>
+      </ul>
+    </li>
+ </ul>
+</div>
+</body>
+</html>

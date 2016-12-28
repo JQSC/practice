@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+.box{ text-align:center}
+</style>
+</head>
+<script>
+/*
+1.封装一个函数，可以通过这个函数获取一组表单控件 radio checkbox 被选中的值
+	如果是radio返回这一组中被选中的值
+    如果是checkbox返回被选中的所有
+
+*/
+window.onload=function()
+{
+	var oForm=document.getElementById('form')
+ 	
+  oForm.btn4.onclick=function()
+  {
+	  var info=getValue(oForm.sex)
+	  
+	  alert(info)
+	  var info=getValue(oForm.check)
+	  alert(info)
+	  }
+   
+  function getValue(obj)	
+  {
+	 var text=""
+	for(var i=0;i<obj.length;i++)
+	{
+	 if(obj[i].checked)
+	 {
+		
+		text+=obj[i].value 
+	 }
+	}
+	return text
+  }
+ /*
+ 
+ 2.表格，自己定一套数据，参考课上格式，然后页面加载的时候动态添加数据到一个表格中
+	增加表单，可以通过表单动态添加数据追加到已有表格中
+    在表格每一行最前面增加一个checkbox，在表格头中也增加一个checkbox all全选
+    点击表格头的checkbox可以选择表格行中的所有checkbox
+    点击行的任何地方都可以单选当前的checkbox
+    增加一个删除按钮，点击删除可以删除所有被
+ */ 
+	   var arr=[{name:'池圣齐',sex:'男',age:26},
+			{name:'王小二',sex:'男',age:32},
+			{name:'小美',sex:'女',age:21},
+			{name:'柳柳',sex:'女',age:23}]
+	var oTab=document.getElementById('tab');
+  
+   var btntc=document.getElementById('btn')
+  btntc.onclick=function()	
+  {
+	 if( oTab.tBodies[0].children.length!=0)
+	 {  
+	    alert('存在数据,无需填充！')
+		 return false
+		 }
+	  
+	 for(var i=0 ;i<arr.length ;i++)
+	{
+	var oTr=document.createElement('tr');
+	var oTd=document.createElement('td');
+	var oInput=document.createElement('input')
+	oInput.type='checkbox'
+	oInput.name='checkNow'
+	oInput.value=i
+	oTab.tBodies[0].appendChild(oTr);
+	oTab.tBodies[0].children[i].appendChild(oTd);	
+	oTab.tBodies[0].children[i].children[0].appendChild(oInput);	
+	var oTd=document.createElement('td');
+	oTd.innerHTML=arr[i].name
+	oTab.tBodies[0].children[i].appendChild(oTd);
+	var oTd=document.createElement('td');
+	oTd.innerHTML=arr[i].sex
+	oTab.tBodies[0].children[i].appendChild(oTd);
+	var oTd=document.createElement('td');
+	oTd.innerHTML=arr[i].age
+	oTab.tBodies[0].children[i].appendChild(oTd);
+	var oTd=document.createElement('td');
+	var oA=document.createElement('a');
+	oA.innerHTML="删除"
+	oA.href="javascript:;"
+	oTab.tBodies[0].children[i].appendChild(oTd);
+	oTab.tBodies[0].children[i].children[4].appendChild(oA);
+	oA.onclick=function()
+	{
+		oTab.tBodies[0].removeChild(this.parentNode.parentNode)
+		
+	 }
+	
+  }
+  }
+  for(var j=0 ;j<oTab.tBodies[0].children.length ;j=j+2)
+  {
+	  
+	  oTab.tBodies[0].children[j].style.background='red'
+   }	
+   
+  var checkAll=document.getElementById('checkAll')
+   checkAll.onclick=function()
+   {
+	   //alert(oTab.tBodies[0].children.length)
+	 if(checkAll.checked)
+	 {
+	   for(var i=0 ; i<oTab.tBodies[0].children.length;i++)
+	   {
+	oTab.tBodies[0].children[i].children[0].children[0].checked=true
+   
+	    }
+	
+     }
+	else{
+	 for(var i=0 ; i<oTab.tBodies[0].children.length;i++)
+	   {
+	oTab.tBodies[0].children[i].children[0].children[0].checked=false
+   
+	    }	
+		} 
+   }
+  ///删除选中行
+  var btn=document.getElementById('btn1')
+  btn.onclick=function()
+  {
+	 // alert(22)
+	  for(var i=oTab.tBodies[0].children.length-1; i>=0;i--)
+	   {
+		///如果被选中  倒序删 正序删会影响排序 造成无法删除干净
+	  if(oTab.tBodies[0].children[i].children[0].children[0].checked)
+	  {
+	
+		  oTab.tBodies[0].removeChild(oTab.tBodies[0].children[i])
+		  
+		  }
+   
+	    }
+	  
+	  
+	  }
+   
+}
+</script>
+
+<body>
+<form id="form">
+<input type="text" value="池圣齐"/>
+<input type="radio" name="sex" value=1 checked="checked"/>男
+<input type="radio" name="sex" value=2 />女
+<input type="checkbox" name="check" value='red' checked="checked"/>红
+<input type="checkbox" name="check" value='green'/>绿
+<input type="checkbox" name="check" value='blue'/>蓝
+<select name="selectn">
+ <option>请选择语言</option>
+ <option>HTML</option>
+ <option>CSS</option>
+ <option>JavaScript</option>
+</select>
+<input type="reset" value="重置" />
+<input type="submit" value="提交" />
+<input type="button"  name="btn1" value="打开一个新窗口" />
+<input type="button"  name="btn2" value="关闭当前窗口" />
+<input type="button"  name="btn3" value="关闭打开的新窗口" />
+<input type="button"  name="btn4" value="被选中的元素" />
+</form>
+<hr/>
+
+<input type="button"  value="填充数据"  id="btn"/>
+<input type="button"  value="删除选中行"  id="btn1"/>
+<table id="tab" border="1px" width="100%" >
+ <thead>
+  <tr>
+    <th><input type="checkbox" name="checkNow" id="checkAll" value=00/>全选</th>
+    <th>姓名</th>
+    <th>性别</th>
+    <th>年龄</th>
+    <th>操作</th>
+  </tr>  
+ </thead>
+ <tbody class="box">
+ </tbody>
+</table>
+</body>
+</html>
