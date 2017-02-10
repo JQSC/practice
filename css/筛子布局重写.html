@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*通用部分*/
+        body{
+            height: 500px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        [class^="box"]{
+
+            border:2px solid #2e6da4;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+            padding: 2px;
+            height: 104px;
+            width: 104px;
+            margin: 2px;
+        }
+        .pip{
+            display: block;
+            margin: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #333;
+
+        }
+        /*弹性布局——骰子为例*/
+        .box1{
+           display: flex;
+           justify-content: center;
+            align-items: center;
+        }
+        .box2{
+            display: flex;
+            justify-content: space-between;
+        }
+        .box2 .pip:nth-child(2){
+            align-self: flex-end;
+        }
+
+        .box3{
+            display: flex;
+            justify-content: center;
+        }
+        .box3 .pip:nth-child(2){
+            align-self: center;
+        }
+        .box3 .pip:nth-child(3){
+            align-self: flex-end;
+        }
+
+        .box4, .box5, .box6, .box9{
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .box4 .column {
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+        }
+
+        .box5 .column{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .box5 .column:nth-child(2){
+
+            justify-content: center;
+        }
+
+        .box6 .column{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .box9 .column{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <span class="pip"></span>
+    </div>
+    <div class="box2">
+        <span class="pip"></span>
+        <span class="pip"></span>
+    </div>
+    <div class="box3">
+        <span class="pip"></span>
+        <span class="pip"></span>
+        <span class="pip"></span>
+    </div>
+    <div class="box4">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+    <div class="box5">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+    <div class="box6">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+    <div class="box9">
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+        <div class="column">
+            <span class="pip"></span>
+            <span class="pip"></span>
+            <span class="pip"></span>
+        </div>
+    </div>
+</body>
+</html>
